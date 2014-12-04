@@ -53,7 +53,7 @@ function seleccionarOpcionUsuarioModoInterfazWeb(opcion){
 	},3000);
 
 
-	fila1.textContent= "TEST"
+	fila1.textContent= resultadoJuego;
 
 }
 
