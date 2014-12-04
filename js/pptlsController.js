@@ -16,7 +16,7 @@ var imagenesJuego03 = {
 	imagenSpok : "images/spok.JPG"
 };
 
-
+var res;
 var resultadoJuego = "8";
 // variables que por defecto toman un numero cualquiera, en este caso "8" indica que no existe asignacion
 var seleccionUsuario = 8;
@@ -44,16 +44,17 @@ function seleccionarOpcionUsuarioModoConsola (){
 function seleccionarOpcionUsuarioModoInterfazWeb(opcion){
 	seleccionUsuario = opcion;
 
-	alert('selecciono: ' + matrizNombreElementos[seleccionUsuario]);
+
+	alert(' el USUARIO selecciono: ' + matrizNombreElementos[seleccionUsuario]);
 
 	setTimeout(function(){
 		seleccionarOpcionMaquina();
 		evaluarSeleccionUsuarioYmaquina(seleccionUsuario,seleccionMaquina);
 		alert('seleccion usuario: '+ matrizNombreElementos[seleccionUsuario] + ',  seleccion maquina: ' + matrizNombreElementos[seleccionMaquina] + ', resultado:  ' + resultadoJuego);
-	},3000);
+	},2000);
 
 
-	fila1.textContent= resultadoJuego;
+	//alert(res);
 
 }
 
@@ -63,23 +64,30 @@ function seleccionarOpcionMaquina (){
 }
 
 function evaluarSeleccionUsuarioYmaquina(seleccionUsu, seleccionMaq){
-
+			var retorno = 0;
 	//for (i = 0;  i<5;  i++){
 	//	for (j=0;  j<5;  j++){
 
 			if (matrizJuego[seleccionUsu][seleccionMaq] == 1){
 				//gana
 				resultadoJuego = "GANASTE!  :)";
+				res = 1;
 
 			}else if (matrizJuego[seleccionUsu][seleccionMaq] == 0){
 				//pierde
 				resultadoJuego = "PERDISTE  :(";
+				res = 0
 
 			}else if (matrizJuego[seleccionUsu][seleccionMaq] == 2){
 				//empate
 				resultadoJuego = "SE EMPATO EL JUEGO  (°_°)";
+				res = 2;
 			}
+			//return retorno;
+			//alert(res);
 
+			var txt = document.getElementById("fila1");
+			txt.textContent = resultadoJuego;
 		//}
 	//}
 }
